@@ -1,22 +1,22 @@
 from transformers import pipeline
 classifier = pipeline("zero-shot-classification", model="MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli")
-syllabus_points = [
+syllabus_points = {
     """ 
         animals - external and internal fertilisation, plants - asexual and sexual reproduction
         fungi -  budding, spores, bacteria - binary fission, protists - binary fission, budding
         fertilisation, implantation and hormonal control of pregnancy and birth in
         mammals, scientific knowledge on plant and animal reproduction in agriculture 
-    """,
+    """: "MOD 5 IQ 1",
     """
         cell replication, mitosis and meiosis, DNA replication with Watson and Crick DNA model, including nucleotide composition, pairing and
         bonding, cell replication processes on the continuity of species
-    """,
+    """: "MOD 5 IQ 2",
     """
         DNA exists in eukaryotes and prokaryotes, mRNA and tRNA transcription and translation
         function and importance of polypeptide synthesis
         genes and environment affect phenotypic expression
         structure and function of proteins
-    """,
+    """: "MOD 5 IQ 3",
     """
         variations of genotype of offspring by modelling meiosis,
         crossing over of homologous chromosomes, fertilisation and mutations
@@ -24,13 +24,13 @@ syllabus_points = [
         examples of autosomal, sex-linkage, co-dominance, incomplete dominance and multiple alleles
         data from pedigrees and Punnett squares
         characteristics in a population, examining frequency data, analysing single nucleotide polymorphism
-    """,
+    """: "MOD 5 IQ 4",
     """
         inheritance patterns in a population using, DNA sequencing and profiling
         population genetics data in conservation management, studies in inheritance of a disease or disorder, 
         relating to human evolution
-    """
-]
+    """: "MOD 5 IQ 5"
+}
 questions = [
     """
     Explain the phenotypic ratios of the F2 generation in both the plant and chicken
@@ -55,9 +55,9 @@ questions = [
 ]
 
 for question in questions:
-    result = classifier(question, syllabus_points)
+    result = classifier(question, list(syllabus_points.keys()))
     print(f"Question: {question.strip()}")
     print("Top 2 Matches:")
     for i in range(2):
-        print(f"  {i + 1}. {result['labels'][i]} with confidence {result['scores'][i]:.2f}")
+        print(f"  {i + 1}. {syllabus_points[result['labels'][i]]} with confidence {result['scores'][i]:.2f}")
     print()
