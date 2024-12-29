@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category }}</title>
+</head>
+<body>
+    <h1>{{ category | capitalize }}</h1>
+    <ul>
+        {% for text, image in questions %}
+            <li>
+                <p>{{ text }}</p>
+                {% if image %}
+                    <img src="{{ image }}" alt="Diagram">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

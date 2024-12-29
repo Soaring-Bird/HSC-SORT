@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload PDF</title>
+</head>
+<body>
+    <h1>Upload PDF</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="subject">Select Subject:</label>
+        <select name="subject" id="subject">
+            <option value="maths">Maths</option>
+            <option value="physics">Physics</option>
+            <option value="biology">Biology</option>
+            <option value="chemistry">Chemistry</option>
+        </select>
+        <br><br>
+        <label for="file">Choose PDF:</label>
+        <input type="file" name="file" id="file" required>
+        <br><br>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ subject }}</title>
+</head>
+<body>
+    <h1>{{ subject | capitalize }}</h1>
+    <ul>
+        {% for category in categories %}
+            <li><a href="/category/{{ subject }}/{{ category }}">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
